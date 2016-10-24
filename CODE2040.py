@@ -131,11 +131,11 @@ for i in range(len(array_for_prefixes)):
 
 print(array_diff)
 
-payload3 = {'token': token, 'array': array_diff}
+array_param = json.dump(array_diff).encode('utf8')
 
-params = json.dump(payload3).encode('utf8')
+payload3 = {'token': token, 'array': array_param}
 
-prefix_array_validate = requests.post('http://challenge.code2040.org/api/prefix/validate', data=params)
+prefix_array_validate = requests.post('http://challenge.code2040.org/api/prefix/validate', data=payload3)
 print("*********" + prefix_array_validate.text)
 print()
 
